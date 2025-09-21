@@ -273,6 +273,11 @@ int main() {
          * I2C-compliant, timing of the ESP8266 Arduino core's Wire implementation.
         */
         //* if (PINB & SDA_mask) {
+        
+        // ???? Regarding to line 265 folowing IF if always false (because (PINB_tmp & SDA_mask) is false) 
+        // So IF should be crossed out or changed to: if ((PINB & SDA_mask) && (PINB & SCL_mask)) 
+        // - only PINB might be changed after skiping from do cycle.
+        
         if ((PINB_tmp & SDA_mask) && (PINB_tmp & SCL_mask)) { //* fixes bug 1
           //* bug 2: this exits the main while(1) loop and the main() function
           //* break;
